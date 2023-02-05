@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.3"
+ruby "3.1.3" #updated version
 
 gem "rails",           "7.0.4"
 gem "bcrypt",          "3.1.18"
@@ -17,7 +17,9 @@ gem "stimulus-rails",  "1.0.4"
 gem "jbuilder",        "2.11.5"
 gem "puma",            "5.6.4"
 gem "bootsnap",        "1.12.0", require: false
-gem "tzinfo-data"
+gem "tzinfo-data" #added to run on vscode
+gem 'excon' #for translate 
+gem 'i18n_data' #for translate 
 
 group :development, :test do
   gem "sqlite3", "1.4.2"
