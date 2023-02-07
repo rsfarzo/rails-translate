@@ -48,6 +48,20 @@ class TranslateController < ApplicationController
   end
 
   def fetch_languages
+    url = URI("https://google-translate1.p.rapidapi.com/language/translate/v2/languages")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request["Accept-Encoding"] = 'application/gzip'
+    request["X-RapidAPI-Key"] = 'ceec4bda6emsh567ef488afa9e53p13853djsn7ea67897cb8f'
+    request["X-RapidAPI-Host"] = 'google-translate1.p.rapidapi.com'
+
+    response = http.request(request)
+    puts response.read_body
+
     languages = api_request('language/translate/v2/languages')
     keys = languages['data']['languages'].map { |l| l['language'].upcase }
     I18nData
